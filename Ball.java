@@ -1,4 +1,4 @@
-package p01;
+package p012;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
