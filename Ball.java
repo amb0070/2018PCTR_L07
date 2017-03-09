@@ -10,10 +10,17 @@ public class Ball {
 	private double x,y,dx,dy;
 	private double v,fi;
 	private Image image;
+	private final int IMG_TAM_X,IMG_TAM_Y;
 
 	public Ball() {
 		ImageIcon ii = new ImageIcon(this.getClass().getResource(Ball));
 		image = ii.getImage();
+		
+		//TODO Depend of image size
+		IMG_TAM_X = 32;
+		IMG_TAM_Y = 32;
+
+		
 		x = Billiards.Width/4-16;
 		y = Billiards.Height/2-16;
 		v = 5;
@@ -37,10 +44,10 @@ public class Ball {
 	}
 
 	private void reflect() {
-		if (Math.abs(x + 32 - Board.RIGHTBOARD) <  Math.abs(dx)) {
+		if (Math.abs(x + IMG_TAM_X - Board.RIGHTBOARD) <  Math.abs(dx)) {
 			fi = Math.PI - fi;
 		}
-		if (Math.abs(y + 32 - Board.BOTTOMBOARD) <  Math.abs(dy)) {
+		if (Math.abs(y + IMG_TAM_Y - Board.BOTTOMBOARD) <  Math.abs(dy)) {
 			fi = - fi;
 		}
 		if (Math.abs(x - Board.LEFTBOARD) <  Math.abs(dx)) {
