@@ -30,10 +30,13 @@ public class Ball {
 		}
 		x += dx;   
 		y += dy;
+		
+		reflect();
+		
 		//TODO Check postcondition
 	}
 
-	public void reflect() {
+	private void reflect() {
 		if (Math.abs(x + 32 - Board.RIGHTBOARD) <  Math.abs(dx)) {
 			fi = Math.PI - fi;
 		}
@@ -46,7 +49,6 @@ public class Ball {
 		if (Math.abs(y - Board.TOPBOARD) <  Math.abs(dy)) {
 			fi = - fi;
 		}
-		//TODO Check postcondition	
 	}
 
 	public int getX() {
