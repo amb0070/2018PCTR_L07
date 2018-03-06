@@ -1,8 +1,8 @@
+package pg02;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-//TODO Transform the code to be used safely in a concurrent context.  
+
 public class Ball {
-       //TODO  Find an archive named Ball.png 
 	private String Ball = "Ball.png"; 
 
 	private double x,y,dx,dy;
@@ -14,7 +14,6 @@ public class Ball {
 		ImageIcon ii = new ImageIcon(this.getClass().getResource(Ball));
 		image = ii.getImage();
 		
-		//TODO Depend of image size
 		IMG_TAM_X = 32;
 		IMG_TAM_Y = 32;
 
@@ -38,10 +37,13 @@ public class Ball {
 		
 		reflect();
 		
-		//TODO Check postcondition
+		assert y>Board.LEFTBOARD;
+		assert y<Board.RIGHTBOARD;
+		assert x>Board.TOPBOARD;
+		assert x<Board.BOTTOMBOARD;
 	}
 
-	private void reflect() {
+	public void reflect() {
 		if (Math.abs(x + IMG_TAM_X - Board.RIGHTBOARD) <  Math.abs(dx)) {
 			fi = Math.PI - fi;
 		}
@@ -86,4 +88,3 @@ public class Ball {
 
 }
 
-//TESTING
