@@ -1,3 +1,4 @@
+package pg02;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,7 +8,9 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//TEST
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 @SuppressWarnings("serial")
 public class Billiards extends JFrame {
 
@@ -19,8 +22,8 @@ public class Billiards extends JFrame {
 	private Board board;
 
 	// TODO update with number of group label. See practice statement.
-	private final int N_BALL = 2;
-	private Ball[] balls;
+	private final int N_BALL = 10;
+	private Ball[] balls = new Ball[N_BALL];
 
 	public Billiards() {
 
@@ -29,7 +32,7 @@ public class Billiards extends JFrame {
 		board.setBackground(new Color(0, 128, 0));
 
 		initBalls();
-
+		
 		b_start = new JButton("Empezar");
 		b_start.addActionListener(new StartListener());
 		b_stop = new JButton("Parar");
@@ -53,13 +56,19 @@ public class Billiards extends JFrame {
 	}
 
 	private void initBalls() {
-		// TODO init balls
+		
+		for(int i=0;i<N_BALL;i++) {
+			balls[i] = new Ball();
+		}
+		board.setBalls(balls);
+		board.repaint();
+		
+		
 	}
 
 	private class StartListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Code is executed when start button is pushed
 
 		}
 	}
@@ -67,7 +76,6 @@ public class Billiards extends JFrame {
 	private class StopListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Code is executed when stop button is pushed
 
 		}
 	}
